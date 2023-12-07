@@ -1,0 +1,191 @@
+[
+  {
+    "objectID": "index.html#chatgpt-detectors",
+    "href": "index.html#chatgpt-detectors",
+    "title": "",
+    "section": "ChatGPT detectors",
+    "text": "ChatGPT detectors"
+  },
+  {
+    "objectID": "index.html#chatgpt-detectors-1",
+    "href": "index.html#chatgpt-detectors-1",
+    "title": "",
+    "section": "ChatGPT detectors😄",
+    "text": "ChatGPT detectors😄"
+  },
+  {
+    "objectID": "index.html#chatgpt-detectors-2",
+    "href": "index.html#chatgpt-detectors-2",
+    "title": "",
+    "section": "ChatGPT detectors🤨",
+    "text": "ChatGPT detectors🤨"
+  },
+  {
+    "objectID": "index.html#study-design",
+    "href": "index.html#study-design",
+    "title": "",
+    "section": "Study design1",
+    "text": "Study design1\n\n\nCollect many human-written essays\n\nSome written by “native English writers”\nOthers by writers who do not write English “natively”\n\nGenerate many essays based on the same prompts\nPass all of the essays to marketed GPT detectors\n\n\nWeixin Liang, Mert Yuksekgonul, Yining Mao, Eric Wu, and James Zou. 2023. “GPT Detectors Are Biased Against Non-Native English Writers.” Patterns 4 (July): 100779."
+  },
+  {
+    "objectID": "index.html#getting-set-up",
+    "href": "index.html#getting-set-up",
+    "title": "",
+    "section": "Getting set up",
+    "text": "Getting set up\n\nlibrary(tidymodels)"
+  },
+  {
+    "objectID": "index.html#getting-set-up-1",
+    "href": "index.html#getting-set-up-1",
+    "title": "",
+    "section": "Getting set up",
+    "text": "Getting set up\n\nlibrary(detectors)\n\nstr(detectors)\n#&gt; tibble [6,185 × 9] (S3: tbl_df/tbl/data.frame)\n#&gt;  $ kind       : Factor w/ 2 levels \"AI\",\"Human\": 2 2 2 1 1 2 1 1 2 2 ...\n#&gt;  $ .pred_AI   : num [1:6185] 0.999994 0.828145 0.000214 0 0.001784 ...\n#&gt;  $ .pred_class: Factor w/ 2 levels \"AI\",\"Human\": 1 1 2 2 2 2 1 2 2 1 ...\n#&gt;  $ detector   : chr [1:6185] \"Sapling\" \"Crossplag\" \"Crossplag\" \"ZeroGPT\" ...\n#&gt;  $ native     : chr [1:6185] \"No\" \"No\" \"Yes\" NA ...\n#&gt;  $ name       : chr [1:6185] \"Real TOEFL\" \"Real TOEFL\" \"Real College Essays\" \"Fake CS224N - GPT3\" ...\n#&gt;  $ model      : chr [1:6185] \"Human\" \"Human\" \"Human\" \"GPT3\" ...\n#&gt;  $ document_id: num [1:6185] 497 278 294 671 717 855 533 484 781 460 ...\n#&gt;  $ prompt     : chr [1:6185] NA NA NA \"Plain\" ..."
+  },
+  {
+    "objectID": "index.html#exploratory-analysis",
+    "href": "index.html#exploratory-analysis",
+    "title": "",
+    "section": "Exploratory analysis",
+    "text": "Exploratory analysis\n\ndetectors %&gt;%\n  count(kind, .pred_class)\n#&gt; # A tibble: 4 × 3\n#&gt;   kind  .pred_class     n\n#&gt;   &lt;fct&gt; &lt;fct&gt;       &lt;int&gt;\n#&gt; 1 AI    AI           1158\n#&gt; 2 AI    Human        2559\n#&gt; 3 Human AI            449\n#&gt; 4 Human Human        2019"
+  },
+  {
+    "objectID": "index.html#exploratory-analysis-1",
+    "href": "index.html#exploratory-analysis-1",
+    "title": "",
+    "section": "Exploratory analysis",
+    "text": "Exploratory analysis\n\ndetectors %&gt;% \n  count(native, kind, .pred_class)\n#&gt; # A tibble: 6 × 4\n#&gt;   native kind  .pred_class     n\n#&gt;   &lt;chr&gt;  &lt;fct&gt; &lt;fct&gt;       &lt;int&gt;\n#&gt; 1 No     Human AI            390\n#&gt; 2 No     Human Human         247\n#&gt; 3 Yes    Human AI             59\n#&gt; 4 Yes    Human Human        1772\n#&gt; 5 &lt;NA&gt;   AI    AI           1158\n#&gt; 6 &lt;NA&gt;   AI    Human        2559"
+  },
+  {
+    "objectID": "index.html#exploratory-analysis-2",
+    "href": "index.html#exploratory-analysis-2",
+    "title": "",
+    "section": "Exploratory analysis",
+    "text": "Exploratory analysis"
+  },
+  {
+    "objectID": "index.html#exploratory-analysis-3",
+    "href": "index.html#exploratory-analysis-3",
+    "title": "",
+    "section": "Exploratory analysis",
+    "text": "Exploratory analysis"
+  },
+  {
+    "objectID": "index.html#exploratory-analysis-4",
+    "href": "index.html#exploratory-analysis-4",
+    "title": "",
+    "section": "Exploratory analysis",
+    "text": "Exploratory analysis"
+  },
+  {
+    "objectID": "index.html#fairness-assessment-with-tidymodels-1",
+    "href": "index.html#fairness-assessment-with-tidymodels-1",
+    "title": "",
+    "section": "Fairness assessment with tidymodels",
+    "text": "Fairness assessment with tidymodels\nHow does a GPT detector behave fairly?\n\nThree perspectives:\n\nEffective detection, group-blind\nFair prediction on human-written essays\nBalancing both notions of fairness"
+  },
+  {
+    "objectID": "index.html#effective-detection-group-blind",
+    "href": "index.html#effective-detection-group-blind",
+    "title": "",
+    "section": "Effective detection, group-blind",
+    "text": "Effective detection, group-blind\nPosition: it is unfair to pass on an essay written by a GPT as one’s own work.\n\nStakeholders:\n\nA detector author\nA student\nAn instructor"
+  },
+  {
+    "objectID": "index.html#effective-detection-group-blind-1",
+    "href": "index.html#effective-detection-group-blind-1",
+    "title": "",
+    "section": "Effective detection, group-blind",
+    "text": "Effective detection, group-blind\n\ndetectors %&gt;%\n  group_by(detector) %&gt;%\n  roc_auc(truth = kind, .pred_AI) %&gt;%\n  arrange(desc(.estimate)) %&gt;%\n  head(3)\n#&gt; # A tibble: 3 × 4\n#&gt;   detector      .metric .estimator .estimate\n#&gt;   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;\n#&gt; 1 GPTZero       roc_auc binary         0.750\n#&gt; 2 OriginalityAI roc_auc binary         0.682\n#&gt; 3 HFOpenAI      roc_auc binary         0.614\n\n\n\n\n\n\n\n\nNote\n\n\nThis code makes no mention of the native variable."
+  },
+  {
+    "objectID": "index.html#fair-prediction-on-human-written-essays",
+    "href": "index.html#fair-prediction-on-human-written-essays",
+    "title": "",
+    "section": "Fair prediction on human-written essays",
+    "text": "Fair prediction on human-written essays\nPosition: it is unfair to incorrectly classify human-written text as AI-generated\n\nStakeholders:\n\nAnother student\nAnother instructor"
+  },
+  {
+    "objectID": "index.html#fair-prediction-on-human-written-essays-1",
+    "href": "index.html#fair-prediction-on-human-written-essays-1",
+    "title": "",
+    "section": "Fair prediction on human-written essays",
+    "text": "Fair prediction on human-written essays\nThe fairness metric equal opportunity quantifies this definition of fairness.\n\n\nequal_opportunity_by_native &lt;- equal_opportunity(by = native)\n\n\n\n\n\n\n\n\n\nNote\n\n\nequal_opportunity() is one of several fairness metrics in the developmental version of yardstick."
+  },
+  {
+    "objectID": "index.html#fair-prediction-on-human-written-essays-2",
+    "href": "index.html#fair-prediction-on-human-written-essays-2",
+    "title": "",
+    "section": "Fair prediction on human-written essays",
+    "text": "Fair prediction on human-written essays\n\n\ndetectors %&gt;%\n  filter(kind == \"Human\") %&gt;%\n  group_by(detector) %&gt;%\n  equal_opportunity_by_native(\n    truth = kind, estimate = .pred_class, event_level = \"second\"\n  ) %&gt;%\n  arrange(.estimate) %&gt;%\n  head(3)\n#&gt; # A tibble: 3 × 5\n#&gt;   detector  .metric           .by    .estimator .estimate\n#&gt;   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;\n#&gt; 1 Crossplag equal_opportunity native binary         0.464\n#&gt; 2 ZeroGPT   equal_opportunity native binary         0.477\n#&gt; 3 GPTZero   equal_opportunity native binary         0.510\n\n\nThe detectors with estimates closest to zero are most fair, by this definition of fairness."
+  },
+  {
+    "objectID": "index.html#balancing-two-notions-of-fairness",
+    "href": "index.html#balancing-two-notions-of-fairness",
+    "title": "",
+    "section": "Balancing two notions of fairness",
+    "text": "Balancing two notions of fairness\nPosition: it is unfair to pass on an essay written by a GPT as one’s own work and it is unfair to incorrectly classify human-written text as AI-generated.\n\nStakeholders:\n\nAnother instructor"
+  },
+  {
+    "objectID": "index.html#balancing-two-notions-of-fairness-1",
+    "href": "index.html#balancing-two-notions-of-fairness-1",
+    "title": "",
+    "section": "Balancing two notions of fairness",
+    "text": "Balancing two notions of fairness\nWorkflow:\n\nEnsure that a model detects GPT-generated work with some threshold of performance, and then\nChoose the model among that set that predicts most fairly on human-written essays\n\n\n\n\n\n\n\n\nQuestion\n\n\nBy this workflow, which of the first definitions of fairness is encoded as more important?"
+  },
+  {
+    "objectID": "index.html#balancing-two-notions-of-fairness-2",
+    "href": "index.html#balancing-two-notions-of-fairness-2",
+    "title": "",
+    "section": "Balancing two notions of fairness",
+    "text": "Balancing two notions of fairness\n\nFind the most performant detectors:\n\nperformant_detectors &lt;- \n  detectors %&gt;%\n  group_by(detector) %&gt;%\n  roc_auc(truth = kind, .pred_AI) %&gt;%\n  arrange(desc(.estimate)) %&gt;%\n  head(3)"
+  },
+  {
+    "objectID": "index.html#balancing-two-notions-of-fairness-3",
+    "href": "index.html#balancing-two-notions-of-fairness-3",
+    "title": "",
+    "section": "Balancing two notions of fairness",
+    "text": "Balancing two notions of fairness\nAmong the most performant detectors, choose the model that predicts most fairly on human-written essays:\n\ndetectors %&gt;%\n  filter(kind == \"Human\", detector %in% performant_detectors$detector) %&gt;%\n  group_by(detector) %&gt;%\n  equal_opportunity_by_native(\n    truth = kind, \n    estimate = .pred_class, \n    event_level = \"second\"\n  ) %&gt;%\n  arrange(.estimate)\n#&gt; # A tibble: 3 × 5\n#&gt;   detector      .metric           .by    .estimator .estimate\n#&gt;   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;\n#&gt; 1 GPTZero       equal_opportunity native binary         0.510\n#&gt; 2 HFOpenAI      equal_opportunity native binary         0.549\n#&gt; 3 OriginalityAI equal_opportunity native binary         0.709"
+  },
+  {
+    "objectID": "index.html#balancing-two-notions-of-fairness-4",
+    "href": "index.html#balancing-two-notions-of-fairness-4",
+    "title": "",
+    "section": "Balancing two notions of fairness",
+    "text": "Balancing two notions of fairness\n\n\n\n\n\n\nTake-home📝\n\n\nSwitch the order of these steps. Does this result in a different set of recommended models?"
+  },
+  {
+    "objectID": "index.html#how-do-i-choose-a-detector",
+    "href": "index.html#how-do-i-choose-a-detector",
+    "title": "",
+    "section": "How do I choose a detector?",
+    "text": "How do I choose a detector?\n\n\n\n\nWhat do you value?"
+  },
+  {
+    "objectID": "index.html#how-do-i-choose-a-fair-machine-learning-model",
+    "href": "index.html#how-do-i-choose-a-fair-machine-learning-model",
+    "title": "",
+    "section": "How do I choose a fair machine learning model?",
+    "text": "How do I choose a fair machine learning model?\n\n\nReflect on what matters to you and potential harms\nFind metrics that reflect your conclusion\nCalculate those metrics\nSituate those metric values in context\nMake your decisions visible"
+  },
+  {
+    "objectID": "index.html#resources-1",
+    "href": "index.html#resources-1",
+    "title": "",
+    "section": "Resources",
+    "text": "Resources\n\n\n\ntidyverse: r4ds.hadley.nz"
+  },
+  {
+    "objectID": "index.html#resources-2",
+    "href": "index.html#resources-2",
+    "title": "",
+    "section": "Resources",
+    "text": "Resources\n\n\n\ntidyverse: r4ds.hadley.nz\ntidymodels: tmwr.org"
+  },
+  {
+    "objectID": "index.html#resources-3",
+    "href": "index.html#resources-3",
+    "title": "",
+    "section": "Resources",
+    "text": "Resources\n\ntidyverse: r4ds.hadley.nz\ntidymodels: tmwr.org\nSlides and example notebooks:\n\n\ngithub.com/simonpcouch/slc-rug-23\n\n\n\ngithub.com/simonpcouch/slc-rug-23"
+  }
+]
