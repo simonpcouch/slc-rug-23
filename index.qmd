@@ -28,6 +28,21 @@ theme_set(theme_bw(base_size = 14) + theme(legend.position = "top"))
 
 <center>github.com/simonpcouch/slc-rug-23</center>
 
+## Fairness in machine learning
+
+. . .
+
+
+![](figures/unfairness_1.png){.absolute top="100" left="20" width="600"}
+
+. . .
+
+![](figures/unfairness_2.png){.absolute top="150" left="120" width="600"}
+
+. . .
+
+![](figures/unfairness_3.png){.absolute top="200" left="220" width="600"}
+
 ---
 
 ```{r}
