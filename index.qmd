@@ -305,7 +305,7 @@ This code makes no mention of the `native` variable.
 
 ## Fair prediction on human-written essays
 
-**Position**: it is unfair to incorrectly classify human-written text as AI-generated
+**Position**: it is unfair to disproportionately classify human-written text as AI-generated
 
 . . .
 
@@ -368,7 +368,7 @@ The detectors with estimates closest to zero are most fair, by this definition o
 
 ## Balancing two notions of fairness
 
-**Position**: it is unfair to pass on an essay written by a GPT as one's own work **and** it is unfair to incorrectly classify human-written text as AI-generated.
+**Position**: it is unfair to pass on an essay written by a GPT as one's own work **and** it is unfair to disportionately classify human-written text as AI-generated.
 
 . . .
 

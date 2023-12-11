@@ -109,7 +109,7 @@
     "href": "index.html#fair-prediction-on-human-written-essays",
     "title": "",
     "section": "Fair prediction on human-written essays",
-    "text": "Fair prediction on human-written essays\nPosition: it is unfair to incorrectly classify human-written text as AI-generated\n\nStakeholders:\n\nAnother student\nAnother instructor"
+    "text": "Fair prediction on human-written essays\nPosition: it is unfair to disproportionately classify human-written text as AI-generated\n\nStakeholders:\n\nAnother student\nAnother instructor"
   },
   {
     "objectID": "index.html#fair-prediction-on-human-written-essays-1",
@@ -130,7 +130,7 @@
     "href": "index.html#balancing-two-notions-of-fairness",
     "title": "",
     "section": "Balancing two notions of fairness",
-    "text": "Balancing two notions of fairness\nPosition: it is unfair to pass on an essay written by a GPT as one’s own work and it is unfair to incorrectly classify human-written text as AI-generated.\n\nStakeholders:\n\nAnother instructor"
+    "text": "Balancing two notions of fairness\nPosition: it is unfair to pass on an essay written by a GPT as one’s own work and it is unfair to disportionately classify human-written text as AI-generated.\n\nStakeholders:\n\nAnother instructor"
   },
   {
     "objectID": "index.html#balancing-two-notions-of-fairness-1",
