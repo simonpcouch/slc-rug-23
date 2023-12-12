@@ -22,7 +22,7 @@ library(tidyverse)
 theme_set(theme_bw(base_size = 14) + theme(legend.position = "top"))
 ```
 
-![Title slide, reading "Fairness in machine learning with tidymodels," my name, Simon P. Couch, and my affiliation, Posit PBC. To the right of the text are six hexagonal stickers showing packages from the tidymodels.](figures/hero.png)
+![](figures/hero.png){fig-alt='Title slide, reading "Fairness in machine learning with tidymodels," my name, Simon P. Couch, and my affiliation, Posit PBC. To the right of the text are six hexagonal stickers showing packages from the tidymodels.'}
 
 # {background-color="#CA225E"}
 
@@ -45,15 +45,15 @@ theme_set(theme_bw(base_size = 14) + theme(legend.position = "top"))
 . . .
 
 
-![A screenshot of a webpage from ProPublica. The hero image is composed of a picture of two men, side by side, one black and one white, with the title "Machine bias."](figures/unfairness_1.png){.absolute top="100" left="20" width="600"}
+![](figures/unfairness_1.png){.absolute top="100" left="20" width="600" fig-alt='A screenshot of a webpage from ProPublica. The hero image is composed of a picture of two men, side by side, one black and one white, with the title "Machine bias."'}
 
 . . .
 
-![A screenshot of a web article with the title "Predictive policing algorithms are racist. They need to be dismantled."](figures/unfairness_2.png){.absolute top="150" left="120" width="600"}
+![](figures/unfairness_2.png){.absolute top="150" left="120" width="600" fig-alt='A screenshot of a web article with the title "Predictive policing algorithms are racist. They need to be dismantled."'}
 
 . . .
 
-![A screenshot of a web article with the title "Amazon scraps secret AI recruiting engine that showed biases against women."](figures/unfairness_3.png){.absolute top="200" left="220" width="600"}
+![](figures/unfairness_3.png){.absolute top="200" left="220" width="600" fig-alt='A screenshot of a web article with the title "Amazon scraps secret AI recruiting engine that showed biases against women."'}
 
 ---
 
@@ -132,15 +132,15 @@ Corollary: machine learning fairness is not simply a mathematical optimization p
 
 . . .
 
-![A screenshot of a web article with title "Cheaters  beware: CHATGPT maker releases AI detection tool."](figures/successes_1.png){.absolute top="100" left="20" width="600"}
+![](figures/successes_1.png){.absolute top="100" left="20" width="600" fig-alt='A screenshot of a web article with title "Cheaters  beware: CHATGPT maker releases AI detection tool."'}
 
 . . .
 
-![A screenshot of a web article with title "The AI detection arms race is on."](figures/successes_2.png){.absolute top="150" left="120" width="600"}
+![](figures/successes_2.png){.absolute top="150" left="120" width="600" fig-alt='A screenshot of a web article with title "The AI detection arms race is on."'}
 
 . . .
 
-![A screenshot of a web article with title "ChatGPT detector catches AI-generated papers with unprecedented accuracy."](figures/successes_3.png){.absolute top="200" left="220" width="600"}
+![](figures/successes_3.png){.absolute top="200" left="220" width="600" fig-alt='A screenshot of a web article with title "ChatGPT detector catches AI-generated papers with unprecedented accuracy."'}
 
 ## ChatGPT detectors😄
 
@@ -154,15 +154,15 @@ Corollary: machine learning fairness is not simply a mathematical optimization p
 
 . . .
 
-![A screenshot of a web article with title "OpenAI abruptly shuts down ChatGPT plagiarism detector, and educators are worried."](figures/failures_1.png){.absolute top="100" left="20" width="600"}
+![](figures/failures_1.png){.absolute top="100" left="20" width="600" fig-alt='A screenshot of a web article with title "OpenAI abruptly shuts down ChatGPT plagiarism detector, and educators are worried."'}
 
 . . .
 
-![A screenshot of a web article with title "Professors are using ChatGPT detector tools to accuse students of cheating. But what if the software is wrong?"](figures/failures_2.png){.absolute top="150" left="120" width="600"}
+![](figures/failures_2.png){.absolute top="150" left="120" width="600" fig-alt='A screenshot of a web article with title "Professors are using ChatGPT detector tools to accuse students of cheating. But what if the software is wrong?"'}
 
 . . .
 
-![A screenshot of a web article with title "AI detectors biased against non-native English writers."](figures/failures_3.png){.absolute top="200" left="220" width="600"}
+![](figures/failures_3.png){.absolute top="200" left="220" width="600" fig-alt='A screenshot of a web article with title "AI detectors biased against non-native English writers."'}
 
 
 
