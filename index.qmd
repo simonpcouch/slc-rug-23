@@ -28,6 +28,18 @@ theme_set(theme_bw(base_size = 14) + theme(legend.position = "top"))
 
 <center>github.com/simonpcouch/slc-rug-23</center>
 
+## Overview
+
+:::incremental
+* What is fair machine learning?
+* Applied example
+  - Problem context
+  - Exploratory analysis
+  - Fairness assessment
+* Model selection
+* Resources
+:::
+
 ## Fairness in machine learning
 
 . . .
@@ -111,6 +123,8 @@ Is _this_ fair?
 . . .
 
 Corollary: machine learning fairness is not simply a mathematical optimization problem
+
+# Applied example: ChatGPT detectors🕵️{background-color="#CA225E"}
 
 ## ChatGPT detectors
 
@@ -457,7 +471,7 @@ detectors %>%
 
 <!-- In this example, changing the prioritization of the criteria results in a different set of recommended models. -->
 
-# Choosing a detector {background-color="#CA225E"}
+# Model selection: choosing a detector {background-color="#CA225E"}
 
 ## How do I choose a detector?
 

@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "",
+    "section": "Overview",
+    "text": "Overview\n\n\nWhat is fair machine learning?\nApplied example\n\nProblem context\nExploratory analysis\nFairness assessment\n\nModel selection\nResources"
+  },
+  {
     "objectID": "index.html#fairness-in-machine-learning",
     "href": "index.html#fairness-in-machine-learning",
     "title": "",
