@@ -484,16 +484,6 @@ detectors %>%
 
 <center><h2 style="color: #878787"><em>What do you value?</em></h2></center>
 
-## How do I choose a fair machine learning model?
-
-:::incremental
-* Reflect on what matters to you and potential harms
-* Find metrics that reflect your conclusion
-* Calculate those metrics
-* Situate those metric values in context
-* Make your decisions visible
-:::
-
 <!-- In the preceding section, we saw that the recommended detector we identify depends on our moral values. That is, the mathematical notion of fairness appropriate for a given analysis follows from the problem context. In this way, no statistical model is objectively more fair than another; our assessment of fairness depends on our personally held ideas of fairness. -->
 
 ```{r rocs}

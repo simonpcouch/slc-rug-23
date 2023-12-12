@@ -807,24 +807,12 @@ github.com/simonpcouch/slc-rug-23
 <em>What do you value?</em>
 </h2>
 </center>
-</div>
-</section>
-<section id="how-do-i-choose-a-fair-machine-learning-model" class="slide level2">
-<h2>How do I choose a fair machine learning model?</h2>
-<div>
-<ul>
-<li class="fragment">Reflect on what matters to you and potential harms</li>
-<li class="fragment">Find metrics that reflect your conclusion</li>
-<li class="fragment">Calculate those metrics</li>
-<li class="fragment">Situate those metric values in context</li>
-<li class="fragment">Make your decisions visible</li>
-</ul>
-</div>
 <!-- In the preceding section, we saw that the recommended detector we identify depends on our moral values. That is, the mathematical notion of fairness appropriate for a given analysis follows from the problem context. In this way, no statistical model is objectively more fair than another; our assessment of fairness depends on our personally held ideas of fairness. -->
 <!-- As for the problem of GPT detection, while each stakeholder might find that some models are more fair than others, even the most fair models recommended in each approach are quite unfair. For instance, from the first stakeholder's perspective, even though it's the most performant model available, GPTZero's `roc_auc()` of 0.75 leaves much to be desired; a stakeholder ought to consider the potential harms resulting from the substantial number of errors made by this model when applied in context. -->
 <!-- This analysis only considered one fairness metric, `equal_opportunity()`. We could have attempted to apply either of the other two fairness metrics included in yardstick 1.3.0, `equalized_odds()` and `demographic_parity()`, or a custom fairness metric. Are those two other metrics well-defined for this problem? Which stakeholders' interests are best represented by those metrics? Would they result in yet another set of discordant recommendations? -->
 <!-- We also did not consider how the outputs of a chosen model be used. If a student's work is classified as written by a GPT model, what happens then? Would a misclassification be more harmful for one type of student than another? Could an instructor trust model output more readily for one type of student than another? Answers to these questions are a necessary component of a complete fairness analysis and, just like the choice of metric, depend heavily on the problem context. -->
 <!-- In all, we've seen that applied fairness analysis is as much a social problem as it is a technical one. While we absolutely ought to strive to minimize harm in development and deployment of machine learning models, the fact that fairness is a moral concept, rather than a mathematical one, means that algorithmic unfairness cannot be automated away. -->
+</div>
 </section></section>
 <section>
 <section id="resources" class="title-slide slide level1 center" data-background-color="#CA225E">
