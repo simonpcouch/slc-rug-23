@@ -60,32 +60,18 @@
     "href": "index.html#exploratory-analysis",
     "title": "",
     "section": "Exploratory analysis",
-    "text": "Exploratory analysis\n\ndetectors %&gt;%\n  count(kind, .pred_class)\n#&gt; # A tibble: 4 × 3\n#&gt;   kind  .pred_class     n\n#&gt;   &lt;fct&gt; &lt;fct&gt;       &lt;int&gt;\n#&gt; 1 AI    AI           1158\n#&gt; 2 AI    Human        2559\n#&gt; 3 Human AI            449\n#&gt; 4 Human Human        2019"
+    "text": "Exploratory analysis"
   },
   {
     "objectID": "index.html#exploratory-analysis-1",
     "href": "index.html#exploratory-analysis-1",
     "title": "",
     "section": "Exploratory analysis",
-    "text": "Exploratory analysis\n\ndetectors %&gt;% \n  count(native, kind, .pred_class)\n#&gt; # A tibble: 6 × 4\n#&gt;   native kind  .pred_class     n\n#&gt;   &lt;chr&gt;  &lt;fct&gt; &lt;fct&gt;       &lt;int&gt;\n#&gt; 1 No     Human AI            390\n#&gt; 2 No     Human Human         247\n#&gt; 3 Yes    Human AI             59\n#&gt; 4 Yes    Human Human        1772\n#&gt; 5 &lt;NA&gt;   AI    AI           1158\n#&gt; 6 &lt;NA&gt;   AI    Human        2559"
+    "text": "Exploratory analysis"
   },
   {
     "objectID": "index.html#exploratory-analysis-2",
     "href": "index.html#exploratory-analysis-2",
-    "title": "",
-    "section": "Exploratory analysis",
-    "text": "Exploratory analysis"
-  },
-  {
-    "objectID": "index.html#exploratory-analysis-3",
-    "href": "index.html#exploratory-analysis-3",
-    "title": "",
-    "section": "Exploratory analysis",
-    "text": "Exploratory analysis"
-  },
-  {
-    "objectID": "index.html#exploratory-analysis-4",
-    "href": "index.html#exploratory-analysis-4",
     "title": "",
     "section": "Exploratory analysis",
     "text": "Exploratory analysis"

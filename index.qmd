@@ -191,18 +191,20 @@ library(detectors)
 str(detectors)
 ```
 
-## Exploratory analysis
+<!-- ## Exploratory analysis -->
 
 ```{r count-kind-pred}
+#| include: false
 detectors %>%
   count(kind, .pred_class)
 ```
 
 <!-- A perfect detector would predict that all essays written by AI were written by AI, the converse for humans, and zeroes elsewhere. -->
 
-## Exploratory analysis
+<!-- ## Exploratory analysis -->
 
 ```{r count-native-kind-pred}
+#| include: false
 detectors %>% 
   count(native, kind, .pred_class)
 ```

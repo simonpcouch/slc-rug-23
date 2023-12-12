@@ -522,53 +522,25 @@ github.com/simonpcouch/slc-rug-23
 <span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt;  $ document_id: num [1:6185] 497 278 294 671 717 855 533 484 781 460 ...</span></span>
 <span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt;  $ prompt     : chr [1:6185] NA NA NA "Plain" ...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="exploratory-analysis" class="slide level2">
-<h2>Exploratory analysis</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>detectors <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">count</span>(kind, .pred_class)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; # A tibble: 4 × 3</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;   kind  .pred_class     n</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;   &lt;fct&gt; &lt;fct&gt;       &lt;int&gt;</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; 1 AI    AI           1158</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt; 2 AI    Human        2559</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt; 3 Human AI            449</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; 4 Human Human        2019</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<!-- ## Exploratory analysis -->
 <!-- A perfect detector would predict that all essays written by AI were written by AI, the converse for humans, and zeroes elsewhere. -->
-</section>
-<section id="exploratory-analysis-1" class="slide level2">
-<h2>Exploratory analysis</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>detectors <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">count</span>(native, kind, .pred_class)</span>
-<span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt; # A tibble: 6 × 4</span></span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;   native kind  .pred_class     n</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;fct&gt; &lt;fct&gt;       &lt;int&gt;</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt; 1 No     Human AI            390</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt; 2 No     Human Human         247</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt; 3 Yes    Human AI             59</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt; 4 Yes    Human Human        1772</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt; 5 &lt;NA&gt;   AI    AI           1158</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt; 6 &lt;NA&gt;   AI    Human        2559</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<!-- ## Exploratory analysis -->
 
 <!-- Note that, for essays written by AI (`kind == "AI"`), the `native` variable isn't well-defined. Those entries thus match the numbers from the above table. -->
 </section>
-<section id="exploratory-analysis-2" class="slide level2">
+<section id="exploratory-analysis" class="slide level2">
 <h2>Exploratory analysis</h2>
 <!-- For essays written by `Human`s, a plot perhaps better demonstrates the disparity: -->
 
 <!-- Most of the essays written by non-native English writers are incorrectly classified as written by AI, while nearly all of the essays written by native English writers are correctly classified as written by humans. The same effect can be seen in the underlying probability distributions: -->
 <img data-src="index_files/figure-revealjs/plot-human-preds-1.png" width="960" class="r-stretch"></section>
-<section id="exploratory-analysis-3" class="slide level2">
+<section id="exploratory-analysis-1" class="slide level2">
 <h2>Exploratory analysis</h2>
 
 
 <!-- Again, note that *all of the plotted essays were written by humans*. An effective detector would thus predict a probability near zero for all of these observations. In this plot, we see that the evidence in our initial table showing these detectors weren't performing well didn't tell the whole story. They perform *quite* well for native English writers, actually. For non-native English writers, though, they perform terribly. -->
 <img data-src="index_files/figure-revealjs/plot-human-preds-by-native-1.png" width="960" class="r-stretch"></section>
-<section id="exploratory-analysis-4" class="slide level2">
+<section id="exploratory-analysis-2" class="slide level2">
 <h2>Exploratory analysis</h2>
 <!-- The above plots aggregate observations across several `detectors`, though. Do some GPT detectors classify essays written by non-native English writers just as well as those from native English writers? We can recreate the above plot to examine this question by faceting across `detectors`. -->
 
@@ -611,17 +583,17 @@ github.com/simonpcouch/slc-rug-23
 <section id="effective-detection-group-blind-1" class="slide level2">
 <h2>Effective detection, group-blind</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>detectors <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">roc_auc</span>(<span class="at">truth =</span> kind, .pred_AI) <span class="sc">%&gt;%</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;   detector      .metric .estimator .estimate</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 1 GPTZero       roc_auc binary         0.750</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; 2 OriginalityAI roc_auc binary         0.682</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; 3 HFOpenAI      roc_auc binary         0.614</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>detectors <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">roc_auc</span>(<span class="at">truth =</span> kind, .pred_AI) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; # A tibble: 3 × 4</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;   detector      .metric .estimator .estimate</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt; 1 GPTZero       roc_auc binary         0.750</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt; 2 OriginalityAI roc_auc binary         0.682</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt; 3 HFOpenAI      roc_auc binary         0.614</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
@@ -661,7 +633,7 @@ github.com/simonpcouch/slc-rug-23
 <p>The <em>fairness metric</em> equal opportunity quantifies this definition of fairness.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>equal_opportunity_by_native <span class="ot">&lt;-</span> <span class="fu">equal_opportunity</span>(<span class="at">by =</span> native)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>equal_opportunity_by_native <span class="ot">&lt;-</span> <span class="fu">equal_opportunity</span>(<span class="at">by =</span> native)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -687,20 +659,20 @@ github.com/simonpcouch/slc-rug-23
 <h2>Fair prediction on human-written essays</h2>
 <!-- The function `equal_opportunity_by_native()` is a yardstick metric function like any other, except it knows to temporarily group by and summarize across a data-column called `native`. Applying it: -->
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>detectors <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(kind <span class="sc">==</span> <span class="st">"Human"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">equal_opportunity_by_native</span>(</span>
-<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">truth =</span> kind, <span class="at">estimate =</span> .pred_class, <span class="at">event_level =</span> <span class="st">"second"</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a>  <span class="fu">arrange</span>(.estimate) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;   detector  .metric           .by    .estimator .estimate</span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt; 1 Crossplag equal_opportunity native binary         0.464</span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 2 ZeroGPT   equal_opportunity native binary         0.477</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 3 GPTZero   equal_opportunity native binary         0.510</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>detectors <span class="sc">%&gt;%</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">filter</span>(kind <span class="sc">==</span> <span class="st">"Human"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>  <span class="fu">equal_opportunity_by_native</span>(</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="at">truth =</span> kind, <span class="at">estimate =</span> .pred_class, <span class="at">event_level =</span> <span class="st">"second"</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">arrange</span>(.estimate) <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;   detector  .metric           .by    .estimator .estimate</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; 1 Crossplag equal_opportunity native binary         0.464</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt; 2 ZeroGPT   equal_opportunity native binary         0.477</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; 3 GPTZero   equal_opportunity native binary         0.510</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p>The detectors with estimates closest to zero are most fair, by this definition of fairness.</p>
@@ -746,33 +718,33 @@ github.com/simonpcouch/slc-rug-23
 <!-- This reflects the belief that it is more unfair to fail to detect GPT-generated work than it is to disproportionately classify human-written work from non-native English writers as GPT-generated, as it is possible that the model that most proportionately classifies human-written work from native and non-native English writers as GPT-generated is not among the recommended models. -->
 <p>Find the most performant detectors:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>performant_detectors <span class="ot">&lt;-</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  detectors <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">roc_auc</span>(<span class="at">truth =</span> kind, .pred_AI) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-6"><a href="#cb8-6"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>performant_detectors <span class="ot">&lt;-</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  detectors <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="fu">roc_auc</span>(<span class="at">truth =</span> kind, .pred_AI) <span class="sc">%&gt;%</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(.estimate)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="balancing-two-notions-of-fairness-3" class="slide level2">
 <h2>Balancing two notions of fairness</h2>
 <p>Among the most performant detectors, choose the model that predicts most fairly on human-written essays:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>detectors <span class="sc">%&gt;%</span></span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(kind <span class="sc">==</span> <span class="st">"Human"</span>, detector <span class="sc">%in%</span> performant_detectors<span class="sc">$</span>detector) <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">equal_opportunity_by_native</span>(</span>
-<span id="cb9-5"><a href="#cb9-5"></a>    <span class="at">truth =</span> kind, </span>
-<span id="cb9-6"><a href="#cb9-6"></a>    <span class="at">estimate =</span> .pred_class, </span>
-<span id="cb9-7"><a href="#cb9-7"></a>    <span class="at">event_level =</span> <span class="st">"second"</span></span>
-<span id="cb9-8"><a href="#cb9-8"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb9-9"><a href="#cb9-9"></a>  <span class="fu">arrange</span>(.estimate)</span>
-<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt; # A tibble: 3 × 5</span></span>
-<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;   detector      .metric           .by    .estimator .estimate</span></span>
-<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span></span>
-<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt; 1 GPTZero       equal_opportunity native binary         0.510</span></span>
-<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt; 2 HFOpenAI      equal_opportunity native binary         0.549</span></span>
-<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt; 3 OriginalityAI equal_opportunity native binary         0.709</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>detectors <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">filter</span>(kind <span class="sc">==</span> <span class="st">"Human"</span>, detector <span class="sc">%in%</span> performant_detectors<span class="sc">$</span>detector) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">group_by</span>(detector) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="fu">equal_opportunity_by_native</span>(</span>
+<span id="cb7-5"><a href="#cb7-5"></a>    <span class="at">truth =</span> kind, </span>
+<span id="cb7-6"><a href="#cb7-6"></a>    <span class="at">estimate =</span> .pred_class, </span>
+<span id="cb7-7"><a href="#cb7-7"></a>    <span class="at">event_level =</span> <span class="st">"second"</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>  <span class="fu">arrange</span>(.estimate)</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt; # A tibble: 3 × 5</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;   detector      .metric           .by    .estimator .estimate</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;   &lt;chr&gt;         &lt;chr&gt;             &lt;chr&gt;  &lt;chr&gt;          &lt;dbl&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 1 GPTZero       equal_opportunity native binary         0.510</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; 2 HFOpenAI      equal_opportunity native binary         0.549</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">#&gt; 3 OriginalityAI equal_opportunity native binary         0.709</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="balancing-two-notions-of-fairness-4" class="slide level2">
