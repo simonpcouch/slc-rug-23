@@ -523,7 +523,7 @@ rocs <-
 :::
 
 ::: {.column width="50%"}
-![The book cover for "R for Data Science."](https://r4ds.hadley.nz/cover.jpg){height="550"}
+![](https://r4ds.hadley.nz/cover.jpg){height="550" fig-alt='The book cover for "R for Data Science."'}
 :::
 :::
 
@@ -536,7 +536,7 @@ rocs <-
 :::
 
 ::: {.column width="50%"}
-![The book cover for "Tidy Modeling with R."](https://www.tmwr.org/images/cover.png){height="550"}
+![](https://www.tmwr.org/images/cover.png){height="550" fig-alt='The book cover for "Tidy Modeling with R."'}
 :::
 :::
 
